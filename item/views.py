@@ -4,14 +4,32 @@ from .models import Item
 from django.http import HttpResponse
 from django import forms
 from .forms import ItemForm
+from calendar import HTMLCalendar
+import calendar, datetime
+from datetime import date
 # Create your views here.
 
 def ItemListView (request):#done testing
     obj = Item.objects.all()
-    print('check obj:',obj)
+
+   # adding a calendar here
+#     month_number = list(calendar.month_name).index(month) #convert month from name to number
+    current_year = datetime.datetime.now().year
+    current_month = datetime.datetime.now().month
+    cal = HTMLCalendar().formatmonth(current_year,current_month)
+
     context = {
-        'obj':obj
+        'obj':obj,
+        'cal':cal,
+
     }
+
+
+
+
+
+
+
 
     return render(request,"ListItem.html",context)
 
