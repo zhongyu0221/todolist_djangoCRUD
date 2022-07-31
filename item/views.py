@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from .models import Item
 from django.http import HttpResponse
@@ -33,8 +33,26 @@ def ItemAddView (request):
         else:
             form = ItemForm()
 
-
     return render(request,'Additem.html',context)
 
 
 
+def ItemDeleteView(request,id):
+    obj = Item.objects.get(id = id)
+    obj.delete()
+
+    return redirect('ListItem')
+
+def ItemUpdateView (request,id):
+    obj = Item.objects.get(id = id)
+    form = ItemForm(request.POST or None,instance=obj)
+    if form.is_valid():
+        form.save()
+        return redirect('ListItem')
+
+    context = {
+        "object":obj,
+        "form":form
+    }
+
+    return render(request, 'UpdateItem.html', context)

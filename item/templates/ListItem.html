@@ -7,8 +7,27 @@
 <body>
 testing listitem page
 
+
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Details</th>
+      <th>Due Date</th>
+  </tr>
 {%  for instance in obj %}
-{{ instance.title }} - {{ instance.detail }}
+  <tr>
+    <td>{{ instance.id }}</td>
+    <td>{{ instance.title }}</td>
+    <td>{{ instance.detail }}</td>
+      <td>{{ instance.Due_Date }}</td>
+    <td><a href="{% url 'DeleteItem' instance.id %}">Delete</a></td>
+    <td><a href="{% url 'UpdateItem' instance.id %}">Update</a></td>
+  </tr>
 {% endfor %}
+</table>
+
+
 </body>
 </html>

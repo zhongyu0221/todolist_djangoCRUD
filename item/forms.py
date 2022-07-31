@@ -28,8 +28,3 @@ class ItemForm(ModelForm):
 
 
 
-
-
-#Create a add item form
-
-# Create a update item form
