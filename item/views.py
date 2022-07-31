@@ -19,9 +19,22 @@ def ItemListView (request):#done testing
 
 
 def ItemAddView (request):
-    form = ItemForm
+    form = ItemForm()
     context = {
         'form' : form
     }
 
+    if request.method == 'POST':
+        form = ItemForm(request.POST)
+        context['form'] = form
+
+        if form.is_valid():
+            form.save()
+        else:
+            form = ItemForm()
+
+
     return render(request,'Additem.html',context)
+
+
+
