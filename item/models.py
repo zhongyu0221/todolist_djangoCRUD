@@ -6,5 +6,5 @@ class Item(models.Model):
     detail = models.TextField(max_length=200)
     Create_Date = models.DateField(default=datetime.now, blank=True)
     Due_Date = models.DateField()
-    item_Image = models.ImageField(null = True, blank = True, upload_to ='images/')
+    #item_Image = models.ImageField(null = True, blank = True, upload_to ='images/')
 
