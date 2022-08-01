@@ -18,6 +18,7 @@ def ItemListView (request):#done testing
     current_month = datetime.datetime.now().month
     cal = HTMLCalendar().formatmonth(current_year,current_month)
 
+
     context = {
         'obj':obj,
         'cal':cal,
@@ -25,13 +26,10 @@ def ItemListView (request):#done testing
     }
 
 
-
-
-
-
-
-
     return render(request,"ListItem.html",context)
+
+
+
 
 
 
